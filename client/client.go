@@ -24,6 +24,7 @@ type (
 	// Filter is used to filter the builds that are pulled
 	// from the queue.
 	Filter struct {
+		Machine string            `json:"machine"`
 		Kind    string            `json:"kind"`
 		Type    string            `json:"type"`
 		OS      string            `json:"os"`
