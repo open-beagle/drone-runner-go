@@ -19,7 +19,7 @@ go mod tidy
 ## tag
 
 ```bash
-git tag v1.11.0-beagle
+git tag v1.11.0-beagle-1
 
-git push origin v1.11.0-beagle
+git push origin v1.11.0-beagle-1
 ```
