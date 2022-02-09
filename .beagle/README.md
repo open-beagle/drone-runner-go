@@ -20,5 +20,6 @@ go mod tidy
 
 ```bash
 git tag v1.11.0-beagle
-git push v1.11.0-beagle
+
+git push --tags
 ```
