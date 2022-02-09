@@ -79,6 +79,7 @@ func Stage(stage *drone.Stage) map[string]string {
 		"DRONE_STAGE_STARTED":    fmt.Sprint(stage.Started),
 		"DRONE_STAGE_FINISHED":   fmt.Sprint(stage.Stopped),
 		"DRONE_STAGE_DEPENDS_ON": strings.Join(stage.DependsOn, ","),
+		"DRONE_CARD_PATH":        "/dev/stdout",
 	}
 	if isStageFailing(stage) {
 		env["DRONE_STAGE_STATUS"] = "failure"
@@ -108,6 +109,14 @@ func StepArgs(name string, number int64) map[string]string {
 	return map[string]string{
 		"DRONE_STEP_NAME":   name,
 		"DRONE_STEP_NUMBER": fmt.Sprint(number),
+	}
+}
+
+// StepName returns a set of environment variables containing
+// only the step name.
+func StepName(name string) map[string]string {
+	return map[string]string{
+		"DRONE_STEP_NAME": name,
 	}
 }
 

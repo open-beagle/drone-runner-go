@@ -30,6 +30,7 @@ const (
 	endpointWatch  = "/rpc/v2/build/%d/watch"
 	endpointBatch  = "/rpc/v2/step/%d/logs/batch"
 	endpointUpload = "/rpc/v2/step/%d/logs/upload"
+	endpointCard   = "/rpc/v2/step/%d/card"
 )
 
 var _ Client = (*HTTPClient)(nil)
@@ -100,7 +101,7 @@ func (p *HTTPClient) Request(ctx context.Context, args *Filter) (*drone.Stage, e
 
 // Accept accepts the build stage for execution.
 func (p *HTTPClient) Accept(ctx context.Context, stage *drone.Stage) error {
-	uri := fmt.Sprintf(endpointStage+"?machine=%s", stage.ID, url.PathEscape(stage.Machine))
+	uri := fmt.Sprintf(endpointStage+"?machine=%s", stage.ID, url.QueryEscape(stage.Machine))
 	src := stage
 	dst := new(drone.Stage)
 	_, err := p.retry(ctx, uri, "POST", nil, dst)
@@ -201,9 +202,16 @@ func (p *HTTPClient) Upload(ctx context.Context, step int64, lines []*drone.Line
 	return err
 }
 
-func (p *HTTPClient) retry(ctx context.Context, method, path string, in, out interface{}) (*http.Response, error) {
+// UploadCard uploads a card to drone server.
+func (p *HTTPClient) UploadCard(ctx context.Context, step int64, card *drone.CardInput) error {
+	uri := fmt.Sprintf(endpointCard, step)
+	_, err := p.retry(ctx, uri, "POST", &card, nil)
+	return err
+}
+
+func (p *HTTPClient) retry(ctx context.Context, path, method string, in, out interface{}) (*http.Response, error) {
 	for {
-		res, err := p.do(ctx, method, path, in, out)
+		res, err := p.do(ctx, path, method, in, out)
 		// do not retry on Canceled or DeadlineExceeded
 		if err := ctx.Err(); err != nil {
 			p.logger().Tracef("http: context canceled")
