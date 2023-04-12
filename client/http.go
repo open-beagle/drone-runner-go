@@ -22,15 +22,15 @@ import (
 )
 
 const (
-	endpointNode   = "/rpc/v2/nodes/%s"
-	endpointPing   = "/rpc/v2/ping"
-	endpointStages = "/rpc/v2/stage"
-	endpointStage  = "/rpc/v2/stage/%d"
-	endpointStep   = "/rpc/v2/step/%d"
-	endpointWatch  = "/rpc/v2/build/%d/watch"
-	endpointBatch  = "/rpc/v2/step/%d/logs/batch"
-	endpointUpload = "/rpc/v2/step/%d/logs/upload"
-	endpointCard   = "/rpc/v2/step/%d/card"
+	endpointNode   = "/awecloud/devops/rpc/v2/nodes/%s"
+	endpointPing   = "/awecloud/devops/rpc/v2/ping"
+	endpointStages = "/awecloud/devops/rpc/v2/stage"
+	endpointStage  = "/awecloud/devops/rpc/v2/stage/%d"
+	endpointStep   = "/awecloud/devops/rpc/v2/step/%d"
+	endpointWatch  = "/awecloud/devops/rpc/v2/build/%d/watch"
+	endpointBatch  = "/awecloud/devops/rpc/v2/step/%d/logs/batch"
+	endpointUpload = "/awecloud/devops/rpc/v2/step/%d/logs/upload"
+	endpointCard   = "/awecloud/devops/rpc/v2/step/%d/card"
 )
 
 var _ Client = (*HTTPClient)(nil)
