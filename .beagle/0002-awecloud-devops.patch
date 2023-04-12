@@ -1,0 +1,41 @@
+From 2c691d3d394b04aba9ea834267cc58caf715c447 Mon Sep 17 00:00:00 2001
+From: shucheng <shucheng@bd-apaas.com>
+Date: Thu, 13 Apr 2023 00:06:23 +0800
+Subject: [PATCH] awecloud devops
+
+---
+ client/http.go | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/client/http.go b/client/http.go
+index 81a5f3d..f1a7cf0 100644
+--- a/client/http.go
++++ b/client/http.go
+@@ -22,15 +22,15 @@ import (
+ )
+ 
+ const (
+-	endpointNode   = "/rpc/v2/nodes/%s"
+-	endpointPing   = "/rpc/v2/ping"
+-	endpointStages = "/rpc/v2/stage"
+-	endpointStage  = "/rpc/v2/stage/%d"
+-	endpointStep   = "/rpc/v2/step/%d"
+-	endpointWatch  = "/rpc/v2/build/%d/watch"
+-	endpointBatch  = "/rpc/v2/step/%d/logs/batch"
+-	endpointUpload = "/rpc/v2/step/%d/logs/upload"
+-	endpointCard   = "/rpc/v2/step/%d/card"
++	endpointNode   = "/awecloud/devops/rpc/v2/nodes/%s"
++	endpointPing   = "/awecloud/devops/rpc/v2/ping"
++	endpointStages = "/awecloud/devops/rpc/v2/stage"
++	endpointStage  = "/awecloud/devops/rpc/v2/stage/%d"
++	endpointStep   = "/awecloud/devops/rpc/v2/step/%d"
++	endpointWatch  = "/awecloud/devops/rpc/v2/build/%d/watch"
++	endpointBatch  = "/awecloud/devops/rpc/v2/step/%d/logs/batch"
++	endpointUpload = "/awecloud/devops/rpc/v2/step/%d/logs/upload"
++	endpointCard   = "/awecloud/devops/rpc/v2/step/%d/card"
+ )
+ 
+ var _ Client = (*HTTPClient)(nil)
+-- 
+2.39.2
+
